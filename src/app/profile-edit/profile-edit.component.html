@@ -1,0 +1,17 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row">
+        <div class="col-auto">
+            <div *ngIf="userProfile != undefined && userProfile.mainPhotoUrl != ''; else defaultImage">                            
+                <img class="img-thumbnail user-photo" src={{userProfile.mainPhotoUrl}} alt="User image">
+            </div>
+            <ng-template #defaultImage>            
+                <img class="img-thumbnail user-photo" src ="assets/default-user.png" alt="User image">
+            </ng-template>
+        </div>
+        <div class="col align-self-end username">
+            {{userProfile?.userName}}
+            
+        </div>
+    </div>
+</div>

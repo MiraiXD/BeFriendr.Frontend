@@ -1,0 +1,142 @@
+<div class="vh-100 d-flex flex-column background">
+    <div class="container-fluid bg-primary home-navbar pb-4">
+    </div>
+    <div class="container h-100 d-flex flex-column align-items-center">
+        <div class="row">
+            <h1>Register</h1>
+        </div>
+
+        <div class="col-6 bg-success">
+            <form>
+                <div class="row align-items-center">
+                    <div class="col-4 text-end">
+                        <label>Email:</label>
+                    </div>
+                    <div class="col text-start">
+                        <input class="form-control" type="text" id="email" name="email"
+                            placeholder="Enter email" [(ngModel)]="registerUser.email" [formControl]="emailControl">
+                        <div *ngIf="emailControl.invalid && (emailControl.dirty || emailControl.touched)">
+                            <p *ngIf="emailControl.errors?.['required']">Username is required</p>
+                            <p *ngIf="emailControl.errors?.['email']">Not a valid email address</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row align-items-center">
+                    <div class="col-4 text-end">
+                        <label>Username:</label>
+                    </div>
+                    <div class="col text-start">
+                        <input class="form-control" type="text" id="username" name="username"
+                            placeholder="Enter username" [(ngModel)]="registerUser.userName" [formControl]="userNameControl">
+                        <div *ngIf="userNameControl.invalid && (userNameControl.dirty || userNameControl.touched)">
+                            <p *ngIf="userNameControl.errors?.['required']">Username is required</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row align-items-center">
+                    <div class="col-4 text-end">
+                        <label>Password:</label>
+                    </div>
+                    <div class="col text-start">
+                        <input class="form-control" type="password" id="password" name="password"
+                            placeholder="Enter password" [(ngModel)]="registerUser.password" [formControl]="passwordControl">
+                        <div *ngIf="passwordControl.invalid && (passwordControl.dirty || passwordControl.touched)">
+                            <p *ngIf="passwordControl.errors?.['required']">Password is required</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row align-items-center">
+                    <div class="col-4 text-end">
+                        <label>Confirm password:</label>
+                    </div>
+                    <div class="col text-start">
+                        <input class="form-control" type="password" id="confirmPassword" name="confirmPassword"
+                            placeholder="Confirm password" [(ngModel)]="registerUser.confirmPassword"
+                            [formControl]="confirmPasswordControl">
+                        <div
+                            *ngIf="confirmPasswordControl.invalid && (confirmPasswordControl.dirty || confirmPasswordControl.touched)">
+                            <p>Passwords do not match</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row align-items-center">
+                    <div class="col-4 text-end">
+                        <label>First name:</label>
+                    </div>
+                    <div class="col text-start">
+                        <input class="form-control" type="text" id="firstName" name="firstName"
+                            placeholder="Enter your first name" [(ngModel)]="registerUser.firstName"
+                            [formControl]="firstNameControl">
+                        <div
+                            *ngIf="firstNameControl.invalid && (firstNameControl.dirty || firstNameControl.touched)">
+                            <p *ngIf="firstNameControl.errors?.['required']">First name is required</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row align-items-center">
+                    <div class="col-4 text-end">
+                        <label>Last name:</label>
+                    </div>
+                    <div class="col text-start">
+                        <input class="form-control" type="text" id="lastName" name="lastName"
+                            placeholder="Enter your last name" [(ngModel)]="registerUser.lastName"
+                            [formControl]="lastNameControl">
+                        <div
+                            *ngIf="lastNameControl.invalid && (lastNameControl.dirty || lastNameControl.touched)">
+                            <p *ngIf="lastNameControl.errors?.['required']">Last name is required</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row align-items-center">
+                    <div class="col-4 text-end">
+                        <label>Birthdate:</label>
+                    </div>
+                    <div class="col text-start">
+                        <input class="form-control" type="text" id="birthDate" name="birthDate"
+                            placeholder="Enter your birth date"
+                            bsDatepicker
+                            (bsValueChange)="onDateChange($event)"
+                            [bsConfig]="datePickerConfig"
+                            [formControl]="birthDateControl">
+                        <div
+                            *ngIf="birthDateControl.invalid && (birthDateControl.dirty || birthDateControl.touched)">
+                            <p *ngIf="birthDateControl.errors?.['isUnderage']">Users must be at least {{minAgeToRegister}} years old</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row align-items-center">
+                    <div class="col-4 text-end">
+                        <label>Gender:</label>
+                    </div>
+                    <div class="col text-start">
+                        <label class="radio-inline">
+                            <input type="radio" name="gender" value="male" [(ngModel)]="registerUser.gender" [formControl]="genderControl"> Male
+                          </label>
+                          <label class="radio-inline">
+                            <input type="radio" name="gender" value="female" [(ngModel)]="registerUser.gender"> Female
+                          </label>                       
+                    </div>
+                </div>
+
+                <div class="row">
+                    <button class="btn btn-primary" type="submit" (click)="register()" 
+                    
+                    >
+                        Register
+                    </button>
+                </div>
+
+            </form>
+        </div>
+       
+
+
+    </div>
+</div>

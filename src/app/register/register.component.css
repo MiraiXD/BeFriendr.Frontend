@@ -1,0 +1,22 @@
+.home-navbar{
+    height: 80px;
+}
+h1{
+    color: white;
+}
+label{
+    color:white;
+}
+.background{
+    background-color: black;
+}
+button{
+    color: white;
+}
+input{
+    background-color: gray;
+    color: white;
+}
+::placeholder{
+    color: white;
+}

@@ -1,0 +1,22 @@
+.container{
+    padding-left: 100px;
+    padding-right: 100px;
+}
+.row {
+    background-color: violet;
+    height: 200px;
+
+}
+
+.col, .col-auto {
+    background-color: skyblue;    
+}
+
+.user-photo {
+    height: 200px;
+    width: 200px;
+}
+.username{
+    font-size: x-large;
+    font-weight: bold;
+}
