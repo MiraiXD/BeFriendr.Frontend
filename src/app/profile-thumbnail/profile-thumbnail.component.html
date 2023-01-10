@@ -1,0 +1,14 @@
+<div class="container">
+    <a href="/users/{{userProfile.userName}}">
+        <div class="row">
+            <div class="p-0 m-0"
+                *ngIf="userProfile !== undefined && userProfile.mainPhotoUrl && userProfile.mainPhotoUrl !== ''; else defaultImage">
+                <img class="img-fluid user-thumbnail" src="{{userProfile.mainPhotoUrl}}" alt="User image">
+            </div>
+            <ng-template #defaultImage>
+                <img class="img-fluid user-thumbnail" src="assets/default-user.jpg" alt="User image">
+            </ng-template>
+        </div>
+        <div class="row justify-content-center thumbnail-text">{{userProfile?.userName}}</div>
+    </a>
+</div>

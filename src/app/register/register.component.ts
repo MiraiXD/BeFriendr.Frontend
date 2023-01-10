@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
     this.usersService.register(this.registerUser).subscribe(
       response=>{
         let user = this.usersService.currentUser;
-        if(user){
+        if(user && user.userName === this.registerUser.userName){
           this.router.navigate(['/users', user.userName]);
         }
       },

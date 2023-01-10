@@ -1,17 +1,40 @@
 <app-navbar></app-navbar>
-<div class="container">
-    <div class="row">
-        <div class="col-auto">
-            <div *ngIf="userProfile != undefined && userProfile.mainPhotoUrl != ''; else defaultImage">                            
-                <img class="img-thumbnail user-photo" src={{userProfile.mainPhotoUrl}} alt="User image">
+<div class="container-fluid">
+    <div class="row photo-row ">
+        <div class="col bounding-col  d-flex flex-row ">
+            <div class="d-flex align-items-center">
+                <div *ngIf="userProfile != undefined && userProfile.mainPhotoUrl && userProfile.mainPhotoUrl != ''; else defaultImage">
+                    <img class="user-photo " src={{userProfile.mainPhotoUrl}} alt="User image">
+                </div>
+                <ng-template #defaultImage>
+                    <img class=" user-photo " src="assets/default-user.jpg" alt="User image">
+                </ng-template>
             </div>
-            <ng-template #defaultImage>            
-                <img class="img-thumbnail user-photo" src ="assets/default-user.png" alt="User image">
-            </ng-template>
+            <div class="d-flex align-items-end mx-2 my-2 big-text ">
+                {{userProfile?.firstName}} {{userProfile?.lastName}}  "{{userProfile?.userName}}"
+            </div>
+
         </div>
-        <div class="col align-self-end username">
-            {{userProfile?.userName}}
-            
+
+    </div>
+    <div class="row  friends-row ">
+        <div class="col bounding-col p-0 big-text">
+            <app-profile-thumbnail-table [width]="3" [height]="3" [friendsCount]="userProfile.friendsCount"
+                [users]="userProfile.selectedFriends"></app-profile-thumbnail-table>
+        </div>
+        <div class="col bounding-col">
+
         </div>
     </div>
+    <!-- <div class="row friends-row">
+        <div class="col bounding-col">
+
+        </div>
+        <div class="col bounding-col">
+
+        </div>
+        <div class="col bounding-col">
+
+        </div>
+    </div> -->
 </div>

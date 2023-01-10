@@ -1,0 +1,12 @@
+<div class="container h-100 px-4 py-2 m-0">
+  <div class="row justify-content-center p-0 m-0">
+    Friends {{friendsCount}}
+  </div>
+  <div class="row p-0 m-0 justify-content-center">
+    <div class="row p-0 m-0" *ngFor="let item of [].constructor(height); let i = index">
+      <div class="col p-0 m-1 d-flex justify-content-center" *ngFor="let item of [].constructor(width); let j = index">
+        <app-profile-thumbnail *ngIf="users[i*height +j] != null" [userProfile]="users[i * height + j]"></app-profile-thumbnail>
+      </div>
+    </div>
+  </div>
+</div>

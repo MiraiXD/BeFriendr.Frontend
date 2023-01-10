@@ -16,7 +16,7 @@
                         <input class="form-control" type="text" id="email" name="email"
                             placeholder="Enter email" [(ngModel)]="registerUser.email" [formControl]="emailControl">
                         <div *ngIf="emailControl.invalid && (emailControl.dirty || emailControl.touched)">
-                            <p *ngIf="emailControl.errors?.['required']">Username is required</p>
+                            <p *ngIf="emailControl.errors?.['required']">Email is required</p>
                             <p *ngIf="emailControl.errors?.['email']">Not a valid email address</p>
                         </div>
                     </div>

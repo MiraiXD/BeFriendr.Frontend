@@ -1,0 +1,13 @@
+.dupa{
+    background-color: red;
+}
+.user-thumbnail{
+    border: 2px solid white;
+    aspect-ratio: 1;    
+    object-fit: cover;
+}
+.thumbnail-text{
+    color: white;
+    font-size: small;
+    font-weight: 100;
+}

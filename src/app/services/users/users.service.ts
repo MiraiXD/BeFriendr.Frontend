@@ -28,12 +28,13 @@ export class UsersService {
     return this._currentUserProfile;
   }
   getUserProfile(userName: string) {
-    var header = {
-      headers: new HttpHeaders()
-        .set('Authorization', 'Bearer ${_currentUserProfile.token}')
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.currentUser?.token
+      })
     };
-    return this.http.get<GetProfileResponse>(environment.networkUrl + userName, header).pipe(
-      map((response) => {
+    return this.http.get<GetProfileResponse>(environment.networkUrl + userName, httpOptions).pipe(      
+      map((response) => {        
         this._currentUserProfile = response.userProfileDto;
         return response.userProfileDto;
       })
@@ -76,5 +77,13 @@ export class UsersService {
   logout() {
     localStorage.removeItem('user');
     this.currentUserSubject.next(null);
+  }
+  isLoggedIn(): boolean{
+    if(this.currentUser) return true;
+    else return false;
+  }
+  isLoggedInAs(userName: string): boolean{
+    if(this.currentUser && this.currentUser.userName === userName) return true;
+    else return false;
   }
 }

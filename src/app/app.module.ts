@@ -13,6 +13,11 @@ import {BsDatepickerModule, BsDatepickerConfig} from 'ngx-bootstrap/datepicker';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
+import { ProfileThumbnailComponent } from './profile-thumbnail/profile-thumbnail.component';
+import { ProfileThumbnailTableComponent } from './profile-thumbnail-table/profile-thumbnail-table.component';
+import { ProfileDetailComponent } from './profile-detail/profile-detail.component';
+import { ProfileComponent } from './profile/profile.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -20,7 +25,11 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component';
     HomeComponent,
     RegisterComponent,
     NavbarComponent,
-    ProfileEditComponent
+    ProfileEditComponent,
+    ProfileThumbnailComponent,
+    ProfileThumbnailTableComponent,
+    ProfileDetailComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +39,8 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component';
     ReactiveFormsModule,
     NgbModule,
     BsDatepickerModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   providers: [BsDatepickerConfig],
   bootstrap: [AppComponent]

@@ -1,0 +1,7 @@
+<div *ngIf="isProfileOwner; else otherUser">
+    <app-profile-edit></app-profile-edit>
+</div>
+<ng-template #otherUser>
+    <!-- <app-profile-edit></app-profile-edit> -->
+    <app-profile-detail></app-profile-detail>
+</ng-template>

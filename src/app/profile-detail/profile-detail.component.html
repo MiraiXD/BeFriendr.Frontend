@@ -1,0 +1,62 @@
+<app-navbar></app-navbar>
+<div class="container-fluid">
+    <div class="row photo-row ">
+        <div class="col bounding-col  d-flex flex-row ">
+            <div class="d-flex align-items-center">
+                <div
+                    *ngIf="userProfile != undefined && userProfile.mainPhotoUrl && userProfile.mainPhotoUrl != ''; else defaultImage">
+                    <img class="user-photo " src={{userProfile.mainPhotoUrl}} alt="User image">
+                </div>
+                <ng-template #defaultImage>
+                    <img class=" user-photo " src="assets/default-user.jpg" alt="User image">
+                </ng-template>
+            </div>
+            <div class="d-flex align-items-end mx-2 my-2 big-text ">
+                DETAIL {{userProfile?.firstName}} {{userProfile?.lastName}} "{{userProfile?.userName}}"
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col d-flex align-items-center justify-content-center">
+            <div *ngIf="userProfile.relationshipWithCurrentUser == null; then AddFriend else RemoveFriendOrCancel">
+            </div>
+            <ng-template #AddFriend>
+                <button class="btn btn-success w-100">Add friend</button>
+            </ng-template>
+            <ng-template #RemoveFriendOrCancel>
+                <div
+                    *ngIf="userProfile.relationshipWithCurrentUser === 'Accepted'; then RemoveFriend else CancelInvitation ">
+                </div>
+                <ng-template #RemoveFriend>
+                    <button class="btn btn-danger w-100">Remove friend</button>
+                </ng-template>
+                <ng-template #CancelInvitation>
+                    <button class="btn btn-warning w-100">Cancel invitation</button>
+                </ng-template>
+
+            </ng-template>
+
+
+        </div>
+    </div>
+    <div class="row  friends-row ">
+        <div class="col bounding-col p-0 big-text">
+            <app-profile-thumbnail-table [width]="3" [height]="3" [friendsCount]="userProfile.friendsCount"
+                [users]="userProfile.selectedFriends"></app-profile-thumbnail-table>
+        </div>
+        <div class="col bounding-col">
+
+        </div>
+    </div>
+    <!-- <div class="row friends-row">
+        <div class="col bounding-col">
+
+        </div>
+        <div class="col bounding-col">
+
+        </div>
+        <div class="col bounding-col">
+
+        </div>
+    </div> -->
+</div>
